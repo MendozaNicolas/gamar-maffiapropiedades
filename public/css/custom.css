@@ -1,0 +1,177 @@
+/* fonts new */
+.poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  .flat-slider.home-1 .slider-content .subtitle-maffia {
+    margin-top: 20px;
+    padding: 0px 60vh 0px 0px;
+  }
+
+  .wd-find-select .inner-group .form-style-nbr /* no border right */ {
+    width: 100%;
+    /* border-right: 1px solid #e4e4e4; */
+  }
+
+  .ml-10 {
+    margin-left: 10px;
+  }
+
+  .boxname-ficha {
+    width: 70% !important;
+  }
+
+  .avt-90 {
+    width: 90px;
+    min-width: 90px;
+    height: 90px;
+
+  }
+
+  /*=================================
+   CUSTOM CCS
+==================================*/
+@media screen and (max-width: 991.98px) {
+    .hide-mobile {
+      display: none !important;
+    }
+    .homeya-box .images-style img {
+        width: 100%;
+        max-width: 650px;
+        height: 250px;
+        object-fit: cover;
+        object-position: center;
+    }
+    .boxname-ficha {
+        width: 100% !important;
+      }
+    
+  }
+  
+  @media screen and (min-width: 768px) {
+    .hide-tablets {
+      display: none;
+    } 
+  }
+  
+  @media screen and (min-width: 1366px) {
+    .hide-desktop {
+      display: none;
+    }
+  }
+  /*# sourceMappingURL=style.css.map */
+  
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+  
