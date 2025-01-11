@@ -20,7 +20,6 @@ class PropertyController extends Controller
         $id = $request->id;
 
 
-
         // Ajusta el tipo de operación si es necesario.
         if ($request->operation_type == 'emprendimiento') {
             $request->property_type = 'propiedades';
@@ -179,8 +178,10 @@ class PropertyController extends Controller
         $metadata = $this->getTokkoProperties()['meta'];
 
 
+        $locations = $this->getTokkoPropertiesByLocation($locationsParams)['objects'];
+
         // Devuelve la vista con los resultados de la búsqueda.
-        return view('property.list', compact('properties_data', 'slug', 'metadata', 'locations_with_properties'));
+        return view('property.list', compact('properties_data', 'slug', 'metadata', 'locations_with_properties', 'locations'));
     }
 
     public function getPropertyDetail($slug)

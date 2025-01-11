@@ -31,6 +31,9 @@
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="images/logo/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="images/logo/favicon.png">
+    <script>
+        const appName = "{{ config('app.inmobiliaria_name') }}";
+    </script>
 </head>
 
 <body class="body counter-scroll">

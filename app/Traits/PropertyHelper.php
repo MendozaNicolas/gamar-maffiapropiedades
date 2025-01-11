@@ -67,6 +67,8 @@ trait PropertyHelper
         $tags = [];
 
 
+        $slug = strtolower($slug);
+
         /*
         |--------------------------------------------------------------------------
         | Busca el tipo de propiedad. Ej: departamentos, locales, etc.

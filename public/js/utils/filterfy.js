@@ -103,16 +103,16 @@ function loadFilters(pd, pt) {
                     value.forEach((tagId) => {
                         const tag = tokko_tags.find((t) => t.id == tagId);
                         if (tag) {
-                            element = `<button onclick="removeFilter('tags:${
+                            element = `<button style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" onclick="removeFilter('tags:${
                                 tag.id
-                            }')"><li><a href><i class="lni lni-xmark-circle"></i>${deslugify(
+                            }')"><li><a href class="blog-tag"><i class="icon lni lni-close" style="font-size: 16px;"></i>${deslugify(
                                 tag.name
                             )}</a></li></button>`;
                             wrapper.innerHTML += element;
                         }
                     });
                 } else {
-                    element = `<button onclick="removeFilter('${key}')"><li><a href><i class="lni lni-xmark-circle"></i>${deslugify(
+                    element = `<button style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" onclick="removeFilter('${key}')"><li><a href class="blog-tag"><i class="icon lni lni-close" style="font-size: 16px;"></i>${deslugify(
                         value
                     )}</a></li></button>`;
                     wrapper.innerHTML += element;
@@ -326,57 +326,57 @@ function loadFilters(pd, pt) {
     }
 
     // > Inicializa valores de precio
-    if (pd.price != "0" && pd.price != "") {
-        // Desktop
-        const e = document.querySelector(`[data-filterfy-info="price:value"]`);
-        e.value = pd.price;
-        // Mobile
-        const eMobile = document.querySelector(`[name="price"]`);
-        eMobile.value = pd.price;
-    }
+    // if (pd.price != "0" && pd.price != "") {
+    //     // Desktop
+    //     const e = document.querySelector(`[data-filterfy-info="price:value"]`);
+    //     e.value = pd.price;
+    //     // Mobile
+    //     // const eMobile = document.querySelector(`[name="price"]`);
+    //     // eMobile.value = pd.price;
+    // }
 
     // > Inicializa valores de dormitorios
-    if (pd.surface != "0" && pd.surface != "") {
-        // Desktop
-        const e = document.querySelector(
-            `[data-filterfy-info="surface:value"]`
-        );
-        e.value = pd.surface;
-        // Mobile
-        const eMobile = document.querySelector(`[name="surface"]`);
-        eMobile.value = pd.surface;
-    }
+    // if (pd.surface != "0" && pd.surface != "") {
+    //     // Desktop
+    //     const e = document.querySelector(
+    //         `[data-filterfy-info="surface:value"]`
+    //     );
+    //     e.value = pd.surface;
+    //     // Mobile
+    //     const eMobile = document.querySelector(`[name="surface"]`);
+    //     eMobile.value = pd.surface;
+    // }
 
-    if (pd.roofed != "0" && pd.roofed != "") {
-        // Desktop
-        const e = document.querySelector(`[data-filterfy-info="roofed:value"]`);
-        e.value = pd.roofed;
-        // Mobile
-        const eMobile = document.querySelector(`[name="roofed_surface"]`);
-        eMobile.value = pd.roofed;
-    }
+    // if (pd.roofed != "0" && pd.roofed != "") {
+    //     // Desktop
+    //     const e = document.querySelector(`[data-filterfy-info="roofed:value"]`);
+    //     e.value = pd.roofed;
+    //     // Mobile
+    //     const eMobile = document.querySelector(`[name="roofed_surface"]`);
+    //     eMobile.value = pd.roofed;
+    // }
 
-    const eI = document.querySelector(`#amenities-input`);
-    if (pd.tags.length > 0) {
-        const e = document.querySelectorAll(`[name="amenities_desktop"]`);
-        if (eI) {
-            eI.placeholder = pd.tags
-                .map((tagId) => {
-                    const tag = property_tags.find((t) => t.id == tagId);
-                    return tag ? tag.name : tagId;
-                })
-                .join(", ");
-        }
-        if (e.length > 0) {
-            Array.from(e).forEach((child) => {
-                if (pd.tags.includes(parseInt(child.value))) {
-                    child.checked = true;
-                }
-            });
-        }
-    } else {
-        eI.placeholder = "Sin amenities seleccionados";
-    }
+    // const eI = document.querySelector(`#amenities-input`);
+    // if (pd.tags.length > 0) {
+    //     const e = document.querySelectorAll(`[name="amenities_desktop"]`);
+    //     if (eI) {
+    //         eI.placeholder = pd.tags
+    //             .map((tagId) => {
+    //                 const tag = property_tags.find((t) => t.id == tagId);
+    //                 return tag ? tag.name : tagId;
+    //             })
+    //             .join(", ");
+    //     }
+    //     if (e.length > 0) {
+    //         Array.from(e).forEach((child) => {
+    //             if (pd.tags.includes(parseInt(child.value))) {
+    //                 child.checked = true;
+    //             }
+    //         });
+    //     }
+    // } else {
+    //     eI.placeholder = "Sin amenities seleccionados";
+    // }
 
     // if (pd.location != appName) {
     //     const e = document.querySelector(`[data-filterfy-info="location:value"]`);
@@ -428,7 +428,8 @@ document.querySelectorAll("[data-filterfy-event]").forEach((element) => {
         });
     } else {
         element.addEventListener(eventType, (event) => {
-            const filterValue = event.target.getAttribute("data-filterfy-info");
+            // tuve que agregarle al target el parentElement porque tomaba el span
+            const filterValue = event.target.parentElement.getAttribute("data-filterfy-info");
             filterfy(filterValue);
         });
     }
@@ -472,6 +473,7 @@ document.querySelectorAll("[data-filterfy-event]").forEach((element) => {
 // Ejemplo de como se usa el filterfy
 // filterfy('bathrooms:2&rooms:3&price:100000-200000&area:100-200');
 function filterfy(filters) {
+    // if(filters == null) return;
     let _f = filters.split("&");
 
     f = _f.reduce((acc, e) => {
@@ -959,3 +961,59 @@ function mostrarDepositos() {
             element.parentElement.parentElement.style.display = "block";
         });
 }
+
+
+
+
+
+
+
+
+
+
+//! ESTO ES TEMPORAL Y LUEGO TENGO QUE CAMBIARLO E INTEGRARLO A FILTERFY.
+
+document.querySelectorAll("[data-beta-filterfy-event]").forEach((element) => {
+    const attribute = element.getAttribute("data-beta-filterfy-event").split(':');
+    
+    const eventType = attribute[0];
+    const formType = attribute[1];
+
+
+    if (eventType === "submit") {
+        element.addEventListener(eventType, (event) => {
+            event.preventDefault();
+            if(formType === "price"){
+                const currency = event.target.querySelectorAll("input[name='currency']:checked")[0].value;
+                const price = event.target.querySelectorAll("input[name='price']")[0].value;
+                
+                console.log(currency, price);
+
+                const filterValue = `price:${price}&currency:${currency}`;
+                filterfy(filterValue);
+            }
+
+            if(formType === "surface"){
+                const surfaceType = event.target.querySelectorAll("input[name='surface_type']:checked")[0].value;
+                const surface = event.target.querySelectorAll("input[name='surface']")[0].value;
+                
+                console.log(surface, surfaceType);
+
+                const filterValue = `${surfaceType}:${surface}`;
+                filterfy(filterValue);
+            }
+
+            
+
+        });
+    }
+   console.log(eventType, formType);
+    
+});
+
+
+document
+        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .forEach((element) => {
+            element.parentElement.parentElement.style.display = "block";
+        });
