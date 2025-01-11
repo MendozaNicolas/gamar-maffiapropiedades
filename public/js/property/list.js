@@ -154,6 +154,7 @@ function getNextProps(request) {
 }
 function loadCard(item) {
     // Si muestro la misma propiedad por cada operacion.
+    console.log('Property card: ', item);
 
     let code = $(`
             <div class="col-md-12">
@@ -195,39 +196,41 @@ function loadCard(item) {
                                 </div>
                                 <ul class="meta-list">
                                     <li class="item">
-                                        <i class="icon icon-bed"></i>
                                         ${
                                             item.room_amount != 0 &&
                                             item.type.name == "Departamento"
-                                                ? `<span>${item.room_amount} Ambientes</span>`
+                                                ? `<i class="icon icon-bed"></i><span>${item.room_amount} Ambientes</span>`
                                                 : ""
                                         }
                                         ${
                                             item.suite_amount != 0 &&
                                             item.type.name != "Departamento"
-                                                ? `<span>${item.suite_amount} Dormitorios</span>`
+                                                ? `<i class="icon icon-bed"></i><span>${item.suite_amount} Dormitorios</span>`
                                                 : ""
                                         }
                                     </li>
                                     <li class="item">
-                                        <i class="icon icon-bathtub"></i>
                                         ${
                                             item.bathroom_amount != 0
-                                                ? `<span>${item.bathroom_amount} Baños</span>`
+                                                ? `<i class="icon icon-bathtub"></i><span>${item.bathroom_amount} Baños</span>`
                                                 : ""
                                         }
                                     </li>
                                     <li class="item">
-                                        <i class="icon icon-ruler"></i>
+                                        
+                                        ${item.surface != 0 ?
+                                        `<i class="icon icon-ruler"></i>
                                         <span>${Number(
-                                            item.total_surface
-                                        ).toFixed(0)} m² Sup. Total</span>
+                                            item.surface
+                                        ).toFixed(0)} m² Sup. Total </span>` : ''}
                                     </li>
                                     <li class="item">
-                                        <i class="icon icon-ruler"></i>
-                                        <span>${Number(
+                                        
+                                        ${item.roofed_surface != 0 ?
+                                        `<i class="icon icon-ruler"></i>
+                                        <span> ${Number(
                                             item.roofed_surface
-                                        ).toFixed(0)}m² Sup.Cub</span>
+                                        ).toFixed(0)}m² Sup.Cub </span>` : ''}
                                     </li>
                                 </ul>
                             </div>

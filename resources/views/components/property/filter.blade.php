@@ -15,7 +15,7 @@
                 <!-- fin ubicaciones-->
                 <!-- TIPO DE PROPIEDAD-->
                 <div class="form-style sidebar-blog" style="margin-top: 20px">
-                    <div class=" categories">
+                    <div data-filterfy-wrapper="property" class=" categories">
                         <label class="title-select">Tipo de Propiedad</label>
                         <ul>
                             <li>
@@ -53,7 +53,7 @@
                 </div>
                 <!-- fin tipo de propiedad-->
                 <!-- tipo de operacion-->
-                <div class="form-style sidebar-blog" style="margin-top: 20px">
+                <div data-filterfy-wrapper="operation" class="form-style sidebar-blog" style="margin-top: 20px">
                     <div class=" categories">
                         <label class="title-select">Tipo de Operación</label>
                         <ul>
@@ -81,7 +81,7 @@
                 </div>
                 <!-- fin tipo de operación-->
                 <!-- dormitorios -->
-                <div class="form-style sidebar-blog" style="margin-top: 20px">
+                <div data-filterfy-wrapper="suites" class="form-style sidebar-blog" style="margin-top: 20px">
                     <div class=" categories">
                         <label class="title-select">Dormitorios</label>
                         <ul>
@@ -122,7 +122,7 @@
                 </div>
                 <!-- fin dormitorios-->
                 <!-- ambientes -->
-                <div class="form-style sidebar-blog" style="margin-top: 20px">
+                <div data-filterfy-wrapper="rooms" class="form-style sidebar-blog" style="margin-top: 20px">
                     <div class=" categories">
                         <label class="title-select">Ambientes</label>
                         <ul>
@@ -163,7 +163,7 @@
                 </div>
                 <!-- fin ambientes-->
                 <!-- baños -->
-                <div class="form-style sidebar-blog" style="margin-top: 20px">
+                <div data-filterfy-wrapper="bathrooms" class="form-style sidebar-blog" style="margin-top: 20px">
                     <div class=" categories">
                         <label class="title-select">Baños/Toillete</label>
                         <ul>
@@ -204,7 +204,7 @@
                 </div>
                 <!-- fin dormitorios-->
                 <!-- Presupuesto -->
-                <form class="form-style" data-beta-filterfy-event="submit:price" method="GET" action="{{ route('property.slugify') }}">
+                <form data-filterfy-wrapper="price" class="form-style" data-beta-filterfy-event="submit:price" method="GET" action="{{ route('property.slugify') }}">
                     <label class="title-select">¿Cuál es tu presupuesto?</label>
                     <div class="box-radio-check" style="display: flex;">
                         <fieldset class="fieldset-radio">
@@ -220,12 +220,12 @@
                         <input type="text" data-filterfy-info="price:value" class="form-control" placeholder="Ingresá tu presupuesto"
                             name="price" title="Ingresá presupuesto" required>
                     </div>
-                    <p style="text-align: end; margin: 8px;"><button type="submit">Aplicar</button></p>
+                    <p style="text-align: end; margin: 8px;"><button style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" type="submit">Aplicar</button></p>
                 </form>
                 <!-- fin preuspuesto-->
 
                 <!-- Superficie -->
-                <form class="form-style" data-beta-filterfy-event="submit:surface" method="GET" action="{{ route('property.slugify') }}">
+                <form data-filterfy-wrapper="surface" class="form-style" data-beta-filterfy-event="submit:surface" method="GET" action="{{ route('property.slugify') }}">
                     <label class="title-select">¿Que superficie buscás?</label>
                     <div class="box-radio-check" style="display: flex;">
 
@@ -242,12 +242,12 @@
                         <input type="text" class="form-control" placeholder="Ingresá los m² deseados" value=""
                             name="surface" title="Ingresá m² deseados" required>
                     </div>
-                    <p style="text-align: end; margin: 8px;"><button type="submit"> Aplicar</button></p>
+                    <p style="text-align: end; margin: 8px;"><button style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" type="submit"> Aplicar</button></p>
                 </form>
                 <!-- fin superficie-->
 
                 <!-- Amenities -->
-                <form data-filterfy-event="submit" class="form-style">
+                <form data-filterfy-wrapper="amenities" data-filterfy-event="submit" class="form-style">
                     <label class="title-select">¿Tiene que contar con algunos de estos atributos?</label>
                     <div class="group-checkbox">
 
@@ -288,7 +288,7 @@
 
                     </div>
 
-                    <p style="text-align: end; margin: 8px;"><button type="submit">Aplicar</button></p>
+                    <p style="text-align: end; margin: 8px;"><button style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" type="submit">Aplicar</button></p>
                 </form>
                 <!-- fin amenities -->
             </div>

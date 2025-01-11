@@ -429,7 +429,8 @@ document.querySelectorAll("[data-filterfy-event]").forEach((element) => {
     } else {
         element.addEventListener(eventType, (event) => {
             // tuve que agregarle al target el parentElement porque tomaba el span
-            const filterValue = event.target.parentElement.getAttribute("data-filterfy-info");
+            const filterValue =
+                event.target.parentElement.getAttribute("data-filterfy-info");
             filterfy(filterValue);
         });
     }
@@ -719,301 +720,295 @@ function hideFilters(value) {
 
 function ocultarTodos() {
     document
-        .querySelectorAll('[data-filterfy-info="rooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="rooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "none";
+            element.style.display = "none";
         });
     document
-        .querySelectorAll('[data-filterfy-info="suites:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="suites"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "none";
+            element.style.display = "none";
         });
     document
-        .querySelectorAll('[data-filterfy-info="bathrooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="bathrooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "none";
+            element.style.display = "none";
         });
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "none";
+            element.style.display = "none";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "none";
+            element.style.display = "none";
         });
     document
-        .querySelectorAll('[data-filterfy-info="roofed:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="roofed"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "none";
+            element.style.display = "none";
         });
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "none";
+            element.style.display = "none";
         });
 }
 
 function mostrarTodos() {
     document
-        .querySelectorAll('[data-filterfy-info="rooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="rooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="suites:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="suites"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="bathrooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="bathrooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="roofed:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="roofed"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
+        });
+    document
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
+        .forEach((element) => {
+            element.style.display = "block";
         });
 }
 
 function mostrarFiltrosLotes() {
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
 }
 
 function mostrarFiltrosDepartamentos() {
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
             element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="rooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="rooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="bathrooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="bathrooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
 }
 
 function mostrarCasasPH() {
     document
-        .querySelectorAll('[data-filterfy-info="rooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="rooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="bathrooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="bathrooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
 }
 
 function mostrarCocheras() {
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
 }
 
 function mostrarLocales() {
     document
-        .querySelectorAll('[data-filterfy-info="bathrooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="bathrooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
 }
 
 function mostrarEdificiosComerciales() {
     document
-        .querySelectorAll('[data-filterfy-info="bathrooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="bathrooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
 }
 
 function mostrarOficinas() {
     document
-        .querySelectorAll('[data-filterfy-info="bathrooms:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="bathrooms"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="amenities:void"]')
+        .querySelectorAll('[data-filterfy-wrapper="amenities"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
 }
 
 function mostrarDepositos() {
     document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="price"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
     document
-        .querySelectorAll('[data-filterfy-info="surface:value"]')
+        .querySelectorAll('[data-filterfy-wrapper="surface"]')
         .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
+            element.style.display = "block";
         });
 }
-
-
-
-
-
-
-
-
-
 
 //! ESTO ES TEMPORAL Y LUEGO TENGO QUE CAMBIARLO E INTEGRARLO A FILTERFY.
 
 document.querySelectorAll("[data-beta-filterfy-event]").forEach((element) => {
-    const attribute = element.getAttribute("data-beta-filterfy-event").split(':');
-    
+    const attribute = element
+        .getAttribute("data-beta-filterfy-event")
+        .split(":");
+
     const eventType = attribute[0];
     const formType = attribute[1];
-
 
     if (eventType === "submit") {
         element.addEventListener(eventType, (event) => {
             event.preventDefault();
-            if(formType === "price"){
-                const currency = event.target.querySelectorAll("input[name='currency']:checked")[0].value;
-                const price = event.target.querySelectorAll("input[name='price']")[0].value;
-                
+            if (formType === "price") {
+                const currency = event.target.querySelectorAll(
+                    "input[name='currency']:checked"
+                )[0].value;
+                const price = event.target.querySelectorAll(
+                    "input[name='price']"
+                )[0].value;
+
                 console.log(currency, price);
 
                 const filterValue = `price:${price}&currency:${currency}`;
                 filterfy(filterValue);
             }
 
-            if(formType === "surface"){
-                const surfaceType = event.target.querySelectorAll("input[name='surface_type']:checked")[0].value;
-                const surface = event.target.querySelectorAll("input[name='surface']")[0].value;
-                
+            if (formType === "surface") {
+                const surfaceType = event.target.querySelectorAll(
+                    "input[name='surface_type']:checked"
+                )[0].value;
+                const surface = event.target.querySelectorAll(
+                    "input[name='surface']"
+                )[0].value;
+
                 console.log(surface, surfaceType);
 
                 const filterValue = `${surfaceType}:${surface}`;
                 filterfy(filterValue);
             }
-
-            
-
         });
     }
-   console.log(eventType, formType);
-    
+    console.log(eventType, formType);
 });
-
-
-document
-        .querySelectorAll('[data-filterfy-info="price:value"]')
-        .forEach((element) => {
-            element.parentElement.parentElement.style.display = "block";
-        });
