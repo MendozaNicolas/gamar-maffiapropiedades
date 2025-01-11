@@ -2,10 +2,8 @@
 
 document.querySelectorAll("[currency-format]").forEach((element) => {
     const currency = element.getAttribute("currency-format");
+    const countryId = element.getAttribute("country-id");
     const value = element.innerHTML;
-    const formatter = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: currency,
-    });
+    const formatter = new Intl.NumberFormat(countryId);
     element.innerHTML = formatter.format(value);
 });

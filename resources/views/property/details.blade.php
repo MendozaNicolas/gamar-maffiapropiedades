@@ -1,133 +1,24 @@
 @extends('layout.app')
 @section('content')
-<!-- Main Header -->
-<header class="main-header fixed-header">
-    <!-- Header Lower -->
-    <div class="header-lower">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="inner-container d-flex justify-content-between align-items-center">
-                    <!-- Logo Box -->
-                    <div class="logo-box">
-                        <div class="logo"><a href="index.html"><img src="images/logo/logo@2x.png" alt="logo"
-                                    width="125"></a></div>
-                    </div>
-                    <div class="nav-outer">
-                        <!-- Main Menu -->
-                        <nav class="main-menu show navbar-expand-md">
-                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                                <ul class="navigation clearfix">
-                                    <li class=" home current"><a href="#">Inicio</a>
-
-                                    </li>
-                                    <li class="dropdown2"><a href="#">Propiedades</a>
-                                        <ul>
-                                            <li><a href="">Lotes en Venta</a> </li>
-                                            <li><a href="">Casas de Verano</a></li>
-                                            <li><a href="">Casas en Venta</a></li>
-                                            <li><a href="">Departamentos en Alquiler</a></li>
-                                            <li><a href="">Departamentos en Venta</a></li>
-                                            <li><a href="">Oficinas</a></li>
-
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Emprendimientos</a> </li>
-                                    <li><a href="#">Nosotros</a> </li>
-                                    <li><a href="#">Contacto</a>
-
-                                    </li>
-
-
-                                </ul>
-                            </div>
-                        </nav>
-                        <!-- Main Menu End-->
-                    </div>
-                    <div class="header-account">
-                        <div class="register">
-                            <ul class="d-flex">
-                                <li><a href="#modalLogin" data-bs-toggle="modal">Login</a></li>
-                                <li>/</li>
-                                <li><a href="#modalRegister" data-bs-toggle="modal">Register</a></li>
-                            </ul>
-                        </div>
-                        <div class="flat-bt-top">
-                            <a class="tf-btn primary" href="add-property.html">Vendé</a>
-                        </div>
-                    </div>
-
-                    <div class="mobile-nav-toggler mobile-button"><span></span></div>
-                    <button class="tasa-ahora-btn"><b>Tasá Ahora</b></button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Header Lower -->
-
-    <!-- Mobile Menu  -->
-    <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>
-    <div class="mobile-menu">
-        <div class="menu-backdrop"></div>
-        <nav class="menu-box">
-            <div class="nav-logo"><a href="index.html"><img src="images/logo/logo@2x.png" alt="nav-logo"
-                        width="120"></a></div>
-            <div class="bottom-canvas">
-                <div class="login-box flex align-items-center">
-                    <a href="#modalLogin" data-bs-toggle="modal">Login</a>
-                    <span>/</span>
-                    <a href="#modalRegister" data-bs-toggle="modal">Register</a>
-                </div>
-                <div class="menu-outer"></div>
-                <div class="button-mobi-sell">
-                    <a class="tf-btn primary" href="add-property.html">Vendé</a>
-                </div>
-                <div class="mobi-icon-box">
-                    <div class="box d-flex align-items-center">
-                        <span class="icon icon-phone2"></span>
-                        <div>1-333-345-6868</div>
-                    </div>
-                    <div class="box d-flex align-items-center">
-                        <span class="icon icon-mail"></span>
-                        <div>themesflat@gmail.com</div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- End Mobile Menu -->
-
-</header>
-<!-- End Main Header -->
-<!-- End Main Header -->
 <section class="flat-location flat-slider-detail-v1">
     <div class="swiper tf-sw-location" data-preview-lg="2.03" data-preview-md="2" data-preview-sm="2" data-space="20"
         data-centered="true" data-loop="true">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a href="https://static.tokkobroker.com/w_pics/6332363_80030490472589901115583304616671263286826825446747699715079623077850635184604.jpg"
-                    data-fancybox="gallery" class="box-imgage-detail d-block">
-                    <img src="https://static.tokkobroker.com/w_pics/6332363_80030490472589901115583304616671263286826825446747699715079623077850635184604.jpg"
-                        alt="img-property"
-                        style="width:100%; height:450px; object-fit: cover; object-position: center;">
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="https://static.tokkobroker.com/water_pics/25763292296179383353184157344601370295377976810234231090096549814494259248212.jpg"
-                    data-fancybox="gallery" class="box-imgage-detail d-block">
-                    <img src="https://static.tokkobroker.com/water_pics/25763292296179383353184157344601370295377976810234231090096549814494259248212.jpg"
-                        alt="img-property"
-                        style="width:100%; height:450px; object-fit: cover; object-position: center;">
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="https://static.tokkobroker.com/water_pics/56470070233221965558548950070800036068681535512156240091801870486014628276055.jpg"
-                    data-fancybox="gallery" class="box-imgage-detail d-block">
-                    <img src="https://static.tokkobroker.com/water_pics/56470070233221965558548950070800036068681535512156240091801870486014628276055.jpg"
-                        alt="img-property"
-                        style="width:100%; height:450px; object-fit: cover; object-position: center;">
-                </a>
-            </div>
+            @forelse ($property['photos'] as $photo)
+                <div class="swiper-slide">
+                    <a href="{{ $photo['image'] }}" data-fancybox="gallery" class="box-imgage-detail d-block">
+                        <img src="{{ $photo['image'] }}" alt="img-property"
+                            style="width:100%; height:450px; object-fit: cover; object-position: center;">
+                    </a>
+                </div>
+            @empty
+                <div class="swiper-slide">
+                    <a href data-fancybox="gallery" class="box-imgage-detail d-block">
+                        <img src="{{asset('/images/no-image.webp')}}" alt="img-property"
+                            style="width:100%; height:450px; object-fit: cover; object-position: center;">
+                    </a>
+                </div>
+            @endforelse
         </div>
         <div class="box-navigation">
             <div class="navigation swiper-nav-next nav-next-location"><span class="icon icon-arr-l"></span></div>
@@ -145,17 +36,33 @@
         <div class="header-property-detail">
             <div class="content-top d-flex justify-content-between align-items-center">
                 <div class="boxname-ficha">
-                    <a href="#" class="flag-tag primary">En Venta</a>
-                    <a href="#" class="flag-tag primary">El Alquier</a>
-                    <h4 class="title link">Alquiler temporal La Delfina - Pilar - Frente al Hospital Austral</h4>
+                    @php
+                        $operationTypes = [];
+                        foreach ($property['operations'] as $item) {
+                            $operationTypes[] = $item['operation_type'];
+                        }
+                    @endphp
+                    @if (in_array('Venta', $operationTypes) && in_array('Alquiler', $operationTypes))
+                        <a href="#" class="flag-tag primary">En Venta</a><a href="#" class="flag-tag primary">En
+                            Alquiler</a>
+                    @elseif (in_array('Venta', $operationTypes))
+                        <a href="#" class="flag-tag primary">En Venta</a>
+                    @elseif (in_array('Alquiler', $operationTypes))
+                        <a href="#" class="flag-tag primary">En Alquiler</a>
+                    @elseif (in_array('Alquiler temporario', $operationTypes))
+                        <a href="#" class="flag-tag primary">En Alquiler temporario</a>
+                    @endif
+                    <h4 class="title link">{{ $property['publication_title'] }}</h4>
                 </div>
                 <div class="box-price d-flex align-items-center">
 
-                    <h5>u$d 250.000 <span class="body-1 text-variant-1"></span>
+                    <h5>u$d <span currency-format="usd"
+                            country-id="es-AR">{{ $property['operations'][0]['prices'][0]['price'] }}</span> <span
+                            class="body-1 text-variant-1"></span>
 
                         <br />
 
-                        u$d 250 <span class="body-1 text-variant-1">/mes</span>
+                        <!-- u$d 250 <span class="body-1 text-variant-1">/mes</span> -->
                     </h5>
 
                 </div>
@@ -173,7 +80,8 @@
                             </div> -->
                 <div class="info-box">
                     <div class="label">Ubicación:</div>
-                    <p class="meta-item"><span class="icon icon-mapPin"></span> Jorge Newbery 1200, Pilar</p>
+                    <p class="meta-item"><span class="icon icon-mapPin"></span>
+                        {{ $property['location']['short_location'] }}</p>
                 </div>
 
             </div>
@@ -182,106 +90,96 @@
             <div class="col-lg-8">
                 <div class="single-property-element single-property-desc">
                     <div class="h7 title fw-7">Descripción de la propiedad</div>
-                    <p class="body-2 text-variant-1">Alquiler de Duplex amueblado - Lagoon Pilar
-
-
-
-                        Se puede alquilar por 1, 2 o 3 años
-
-                        Totalmente amueblado y equipado. Excelente estado, recien pintado
-
-
-
-                        Cocina comedor, galeria, jardin. Tres habitaciones
-
-                        Expensas y servicios a cargo del inquilino. Arba a cargo de propietario
-
-
-
-                        Requisitos
-
-                        - Mes de alquiler y mes de deposito
-
-                        - Garantia propietaria o seguro de caución
-
-                        - Recibo de sueldo o demostracion de ingresos</p>
-
-
+                    <p class="body-2 text-variant-1" id="rich-description">
+                        {{ $property['description'] }}
+                    </p>
                 </div>
                 <div class="single-property-element single-property-overview">
                     <div class="h7 title fw-7">Aspectos generales</div>
                     <ul class="info-box">
                         <li class="item">
-                            <a href="#" class="box-icon w-52"><i class="icon icon-house-line"></i></a>
+                            <a href class="box-icon w-52"><i class="icon icon-house-line"></i></a>
                             <div class="content">
                                 <span class="label">ID:</span>
-                                <span>2297</span>
+                                <span>{{ $property['id'] }}</span>
                             </div>
                         </li>
+                        @if($property['suite_amount'] > 0)
+                            <li class="item">
+                                <a href class="box-icon w-52"><i class="icon icon-bed"></i></a>
+                                <div class="content">
+                                    <span class="label">Dormitorios:</span>
+                                    <span>{{ $property['suite_amount'] }}</span>
+                                </div>
+                            </li>
+                        @endif
+                        @if($property['room_amount'] > 0)
+                            <li class="item">
+                                <a href class="box-icon w-52"><i class="icon icon-bed"></i></a>
+                                <div class="content">
+                                    <span class="label">Ambientes:</span>
+                                    <span>{{ $property['room_amount'] }}</span>
+                                </div>
+                            </li>
+                        @endif
+                        @if($property['bathroom_amount'] > 0)
+                            <li class="item">
+                                <a href class="box-icon w-52"><i class="icon icon-bathtub"></i></a>
+                                <div class="content">
+                                    <span class="label">Baños:</span>
+                                    <span>{{ $property['bathroom_amount'] }}</span>
+                                </div>
+                            </li>
+                        @endif
+                        @if($property['parking_lot_amount'] > 0)
+                            <li class="item">
+                                <a href class="box-icon w-52"><i class="icon icon-garage"></i></a>
+                                <div class="content">
+                                    <span class="label">Garages:</span>
+                                    <span>{{ $property['parking_lot_amount'] }}</span>
+                                </div>
+                            </li>
+                        @endif
+                        @if($property['roofed_surface'] > 0)
+                            <li class="item">
+                                <a href class="box-icon w-52"><i class="icon icon-ruler"></i></a>
+                                <div class="content">
+                                    <span class="label">Sup.Cubierta:</span>
+                                    <span>{{ $property['roofed_surface'] }} m²</span>
+                                </div>
+                            </li>
+                        @endif
                         <li class="item">
-                            <a href="#" class="box-icon w-52"><i class="icon icon-arrLeftRight"></i></a>
+                            <a href class="box-icon w-52"><i class="icon icon-crop"></i></a>
                             <div class="content">
                                 <span class="label">Sup.Total:</span>
-                                <span>600 m²</span>
+                                <span>{{ $property['surface'] }} m²</span>
                             </div>
                         </li>
                         <li class="item">
-                            <a href="#" class="box-icon w-52"><i class="icon icon-bed"></i></a>
-                            <div class="content">
-                                <span class="label">Dormitorios:</span>
-                                <span>2 </span>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <a href="#" class="box-icon w-52"><i class="icon icon-bathtub"></i></a>
-                            <div class="content">
-                                <span class="label">Baños:</span>
-                                <span>2 </span>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <a href="#" class="box-icon w-52"><i class="icon icon-garage"></i></a>
-                            <div class="content">
-                                <span class="label">Garages:</span>
-                                <span>p/ 2 Autos</span>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <a href="#" class="box-icon w-52"><i class="icon icon-ruler"></i></a>
-                            <div class="content">
-                                <span class="label">Sup.Cubierta:</span>
-                                <span>600 m²</span>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <a href="#" class="box-icon w-52"><i class="icon icon-crop"></i></a>
-                            <div class="content">
-                                <span class="label">Sup.Total:</span>
-                                <span>600 m²</span>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <a href="#" class="box-icon w-52"><i class="icon icon-hammer"></i></a>
+                            <a href class="box-icon w-52"><i class="icon icon-hammer"></i></a>
                             <div class="content">
                                 <span class="label">Antiguedad:</span>
-                                <span>2018</span>
+                                <span>{{ $property['age'] ? $property['age'] : 'A estrenar' }}</span>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="single-property-element ">
-                    <div class="h7 title fw-7">Video</div>
-                    <div class="img-video">
-                        <iframe width="100%" height="410" src="https://www.youtube.com/embed/t_0RC96t0Wc"
-                            title="Pellegrini" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <!-- <img src="images/banner/img-video.jpg" alt="img-video">
-                                   
-                                    <a href="https://youtu.be/t_0RC96t0Wc" data-fancybox="gallery2" class="btn-video"> <span class="icon icon-play"></span></a> -->
+                @if ($property['videos'] != [])
+                    <div class="single-property-element ">
+                        <div class="h7 title fw-7">Video</div>
+                        <div class="img-video">
+                            <iframe width="100%" height="410" src="{{ $property['videos'][0]['player_url'] }}"
+                                title="{{ $property['videos'][0]['title'] }}" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <!-- <img src="images/banner/img-video.jpg" alt="img-video">
+
+                                                <a href="https://youtu.be/t_0RC96t0Wc" data-fancybox="gallery2" class="btn-video"> <span class="icon icon-play"></span></a> -->
+                        </div>
                     </div>
-                </div>
-                <div class="single-property-element single-property-explore">
+                @endif
+                <!-- <div class="single-property-element single-property-explore">
                     <div class="h7 title fw-7">Matterport 360</div>
                     <div class="box-img">
                         <img src="images/banner/img-explore.jpg" alt="img">
@@ -289,7 +187,7 @@
                             <span class="icon icon-360"></span>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="single-property-element single-property-info">
                     <div class="h7 title fw-7">
                         Detalles de la propiedad:
@@ -298,7 +196,7 @@
                         <div class="col-md-6">
                             <div class="inner-box">
                                 <span class="label">Tokko ID:</span>
-                                <div class="content fw-7">AVT1020</div>
+                                <div class="content fw-7">{{$property['reference_code']}}</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -309,66 +207,82 @@
                         </div>
                         <div class="col-md-6">
                             <div class="inner-box">
-                                <span class="label">Precio de Venta: </span>
-                                <div class="content fw-7">u$d 250.000</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="inner-box">
                                 <span class="label">Ambientes:</span>
                                 <div class="content fw-7">1</div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="inner-box">
-                                <span class="label">Precio de Alquiler: </span>
-                                <div class="content fw-7">u$d 250.000<span
-                                        class="caption-1 fw-4 text-variant-1">/month</span></div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <div class="inner-box">
-                                <span class="label">Baños:</span>
-                                <div class="content fw-7">1</div>
-                            </div>
-                        </div>
+                        @foreach($property['operations'] as $operation)
+                            @if($operation['operation_type'] == 'Venta')
+                                <div class="col-md-6">
+                                    <div class="inner-box">
+                                        <span class="label">Precio de Venta: </span>
+                                        <div class="content fw-7">u$d <span currency-format="usd"
+                                                country-id="es-AR">{{$operation['prices'][0]['price']}}</span></div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
 
-                        <div class="col-md-6">
-                            <div class="inner-box">
-                                <span class="label">Sup. Total:</span>
-                                <div class="content fw-7">600 m²</div>
+                        @foreach($property['operations'] as $operation)
+                            @if($operation['operation_type'] != 'Venta')
+                                <div class="col-md-6">
+                                    <div class="inner-box">
+                                        <span class="label">Precio de Alquiler: </span>
+                                        <div class="content fw-7">u$d <span currency-format="usd"
+                                                country-id="es-AR">{{$operation['prices'][0]['price']}}</span><span
+                                                class="caption-1 fw-4 text-variant-1">/mes</span></div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+
+                        @if($property['bathroom_amount'] > 0)
+                            <div class="col-md-6">
+                                <div class="inner-box">
+                                    <span class="label">Baños:</span>
+                                    <div class="content fw-7">{{$property['bathroom_amount']}}</div>
+                                </div>
                             </div>
-                        </div>
+                        @endif
+                        @if($property['surface'] > 0)
+                            <div class="col-md-6">
+                                <div class="inner-box">
+                                    <span class="label">Sup. Total:</span>
+                                    <div class="content fw-7">{{$property['surface']}} m²</div>
+                                </div>
+                            </div>
+                        @endif
 
 
                         <div class="col-md-6">
                             <div class="inner-box">
                                 <span class="label">Antiguedad:</span>
-                                <div class="content fw-7">3 Años</div>
+                                <div class="content fw-7">
+                                    {{ $property['age'] ? $property['age'] . " Años" : 'A estrenar' }}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="inner-box">
-                                <span class="label">Sup. Cubierta:</span>
-                                <div class="content fw-7">600 m²</div>
+                        @if($property['roofed_surface'] > 0)
+                            <div class="col-md-6">
+                                <div class="inner-box">
+                                    <span class="label">Sup. Cubierta:</span>
+                                    <div class="content fw-7">{{ $property['roofed_surface'] }} m²</div>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="col-md-6">
                             <div class="inner-box">
                                 <span class="label">Orientación:</span>
-                                <div class="content fw-7">Este</div>
+                                <div class="content fw-7">{{$property['orientation']}}</div>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="inner-box">
                                 <span class="label">Cocheras:</span>
-                                <div class="content fw-7">1</div>
+                                <div class="content fw-7">{{ $property['parking_lot_amount'] > 0 ? 'Si' : 'No' }}</div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="single-property-element single-property-feature">
@@ -377,100 +291,28 @@
                         <div class="box-feature">
 
                             <ul>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Aire Acondicionado
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Calefacción Central
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Pileta
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Balcón
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Seguridad 24 hrs
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Aire Acondicionado
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Calefacción Central
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Pileta
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Balcón
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Seguridad 24 hrs
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Aire Acondicionado
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Calefacción Central
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Pileta
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Balcón
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Seguridad 24 hrs
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Aire Acondicionado
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Calefacción Central
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Pileta
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Balcón
-                                </li>
-                                <li class="feature-item">
-                                    <span class="icon lni lni-checkmark-circle"></span>
-                                    Seguridad 24 hrs
-                                </li>
+                                @forelse ($property['tags'] as $tag)
+                                    <li></li>
+                                    <li class="feature-item">
+                                        <span class="icon lni lni-checkmark-circle"></span>
+                                        {{ $tag['name'] }}
+                                    </li>
+                                @empty
+                                    <li>No hay servicios disponibles</li>
+                                @endforelse
                             </ul>
                         </div>
 
                     </div>
                 </div>
-                <div class="single-property-element single-property-map">
+                <!-- <div class="single-property-element single-property-map">
                     <div class="h7 title fw-7">Ubicación</div>
                     <div id="map-single" class="map-single" data-map-zoom="16" data-map-scroll="true"></div>
-
-                </div>
-
+                </div> -->
 
 
-                <div class="single-property-element single-property-loan">
+
+                <!-- <div class="single-property-element single-property-loan">
                     <div class="h7 title fw-7">Simulador de Prestamo Hipotecario</div>
                     <form action="#" class="box-loan-calc">
                         <div class="box-top">
@@ -529,7 +371,7 @@
                         </div>
 
                     </form>
-                </div>
+                </div> -->
 
 
             </div>
@@ -539,33 +381,42 @@
                         <div class="h7 title fw-7">Contactate por esta propiedad</div>
                         <div class="box-avatar">
                             <div class="avatar avt-90 round">
-                                <img src="images/logo/logo@2x.png" alt="avatar">
+                                <img src="{{ $property['branch']['logo'] }}" alt="avatar">
                             </div>
                             <div class="info">
-                                <div class="text-1 name">Virginia Maffia</div>
-                                <span><i class="icon lni lni-phone"></i> 4567-8907<br /> <i
-                                        class="icon lni lni-envelope"></i> info@virginiamaffia.com.ar</span>
+                                <div class="text-1 name">{{ $property['branch']['display_name'] }}</div>
+                                <span><i class="icon lni lni-phone"></i> <a target="_blank" rel="noopener noreferrer"
+                                        href="https://api.whatsapp.com/send/?phone={{ $property['branch']['alternative_phone_country_code'] . $property['branch']['alternative_phone_area'] . $property['branch']['alternative_phone'] }}&text=Me+gustar%C3%ADa+ser+contactado+para+consultarles+por+una+propiedad.&type=phone_number&app_absent=0">{{ $property['branch']['alternative_phone_area'] . $property['branch']['alternative_phone'] }}</a><br />
+                                    <i class="icon lni lni-envelope"></i> <a
+                                        href="mailto:{{ $property['branch']['email'] }}">{{ $property['branch']['email'] }}</a></span>
                             </div>
                         </div>
-                        <form action="#" class="contact-form">
+                        <form method="POST" action="{{ route('contact') }}" class="contact-form">
+                            @csrf
+                            <input type="hidden" name="type" value="propiedad">
+                            <input type="hidden" name="branch" value="{{ $property['branch']['name'] }}">
+                            <input type="hidden" name="agentEmail" value="{{ $property['branch']['email'] }}">
+                            <input type="hidden" name="propertyId" value="{{ $property['id'] }}">
                             <div class="ip-group">
                                 <label for="fullname">Nombre Completo</label>
-                                <input type="text" placeholder="Ingresá tu nombre" class="form-control" required>
+                                <input type="text" placeholder="Ingresá tu nombre" class="form-control" name="name"
+                                    required>
                             </div>
                             <div class="ip-group">
                                 <label for="phone">Teléfono de Contacto</label>
-                                <input type="text" placeholder="1122334455" class="form-control" required>
+                                <input type="text" placeholder="1122334455" class="form-control" name="phone" required>
                             </div>
                             <div class="ip-group">
                                 <label for="email">Correo Electrónico</label>
-                                <input type="text" placeholder="themesflat@gmail.com" class="form-control" required>
+                                <input type="text" placeholder="ejemplo@gmail.com" class="form-control" name="email"
+                                    required>
                             </div>
                             <div class="ip-group">
                                 <label for="message">Consulta:</label>
                                 <textarea id="comment-message" name="message" rows="4" tabindex="4"
-                                    placeholder="Message" aria-required="true"></textarea>
+                                    placeholder="Mensaje" aria-required="true"></textarea>
                             </div>
-                            <button class="tf-btn primary w-100">Envíar Consulta</button>
+                            <button type="submit" class="tf-btn primary w-100">Envíar Consulta</button>
                         </form>
                     </div>
 
@@ -747,50 +598,5 @@
         </div>
     </div>
 </section>
-
-
-
-<!-- footer -->
-<footer class="footer">
-    <div class="top-footer">
-        <div class="container">
-            <div class="content-footer-top">
-                <div class="footer-logo">
-                    <img src="images/logo/logo-footer@2x.png" alt="logo-footer" width="174" height="44">
-                </div>
-                <div class="wd-social">
-                    <span>Seguinos:</span>
-                    <ul class="list-social d-flex align-items-center">
-                        <li><a href="#" class="box-icon w-40 social"><i class="icon icon-facebook"></i></a></li>
-                        <li><a href="#" class="box-icon w-40 social"><i class="icon icon-linkedin"></i></a></li>
-
-
-                        <li><a href="#" class="box-icon w-40 social"><i class="icon lni lni-instagram-original"></i></a>
-                        </li>
-                        <li><a href="#" class="box-icon w-40 social"><i class="icon icon-youtube"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bottom-footer">
-        <div class="container">
-            <div class="content-footer-bottom">
-                <div class="copyright">©2024 Virginia Maffia Propiedades. Todos los derechos reservados. Un diseño de
-                    <strong>gam.ar</strong>
-                </div>
-
-                <ul class="menu-bottom">
-                    <li><a href="our-service.html">Usos del Sitio</a> </li>
-
-
-                    <li><a href="contact.html">Sitemap</a> </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- end footer -->
+<script src="{{asset('/js/utils/format.js')}}"></script>
 @endsection

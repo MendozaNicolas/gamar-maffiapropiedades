@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,4 +25,8 @@ Route::controller(PropertyController::class)->group(function () {
     Route::get('/get/properties-data', 'getPropertyData')->name('getPropertiesData');
     Route::get('/get/tags', 'getPropertyTags')->name('getTags');
     Route::get('/get/properties', 'getProperties')->name('getProps');
+});
+
+Route::controller(ContactController::class)->group(function () {
+    Route::post('/contactar', 'sendContactForm')->name('contact');
 });

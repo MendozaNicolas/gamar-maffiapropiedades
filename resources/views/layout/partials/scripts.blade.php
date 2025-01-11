@@ -1,6 +1,5 @@
 <!-- Javascript -->
 <script type="text/javascript" src="{{asset('vendor/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('vendor/jquery-3.7.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('vendor/swiper-bundle.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('vendor/carousel.js')}}"></script>
 <script type="text/javascript" src="{{asset('vendor/plugin.js')}}"></script>
