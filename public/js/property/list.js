@@ -218,7 +218,7 @@ function loadCard(item) {
                                     </li>
                                     <li class="item">
                                         
-                                        ${item.surface != 0 ?
+                                        ${((item.surface != 0 && item.type.name != "Departamento")) ?
                                         `<i class="icon icon-ruler"></i>
                                         <span>${Number(
                                             item.surface

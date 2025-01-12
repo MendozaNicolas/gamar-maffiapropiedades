@@ -175,7 +175,7 @@
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             <!-- <img src="images/banner/img-video.jpg" alt="img-video">
 
-                                                <a href="https://youtu.be/t_0RC96t0Wc" data-fancybox="gallery2" class="btn-video"> <span class="icon icon-play"></span></a> -->
+                                                    <a href="https://youtu.be/t_0RC96t0Wc" data-fancybox="gallery2" class="btn-video"> <span class="icon icon-play"></span></a> -->
                         </div>
                     </div>
                 @endif
@@ -436,167 +436,32 @@
         </div>
         <div class="swiper tf-latest-property" data-preview-lg="3" data-preview-md="2" data-preview-sm="2"
             data-space="30" data-loop="true">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="homeya-box style-2">
-                        <div class="archive-top">
-                            <a href="#" class="images-group">
-                                <div class="images-style">
-                                    <img src="https://static.tokkobroker.com/water_pics/50570651301868238462882218016317417820021925240332846465262447919005171948367.jpg"
-                                        alt="img">
-                                </div>
-
-                            </a>
-                            <div class="content">
-                                <div class="h7 text-capitalize fw-7"><a href="#" class="link"> Sunset Heights Estate,
-                                        Beverly Hills</a></div>
-                                <div class="desc"><i class="fs-16 icon icon-mapPin"></i>
-                                    <p>1040 Ocean, Santa Monica, California</p>
-                                </div>
-                                <ul class="meta-list">
-                                    <li class="item">
-                                        <i class="icon icon-bed"></i>
-                                        <span>4 Dormitorios</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-bathtub"></i>
-                                        <span>2 Baños</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-ruler"></i>
-                                        <span>600m² Sup. Total</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-ruler"></i>
-                                        <span>600m² Sup.Cub</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="archive-bottom d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Alquiler<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center hide-mobile">
-                                <div class=" fw-4">Alquiler Temporario<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Venta<Br /><span class="fw-7">USD 750.000</span></div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="homeya-box style-2">
-                        <div class="archive-top">
-                            <a href="#" class="images-group">
-                                <div class="images-style">
-                                    <img src="https://static.tokkobroker.com/w_pics/6301867_52133587760306425920978975864805535554448894184803572618216500197148571442465.jpg"
-                                        alt="img">
-                                </div>
-
-                            </a>
-                            <div class="content">
-                                <div class="h7 text-capitalize fw-7"><a href="#" class="link">Coastal Serenity
-                                        Cottage</a></div>
-                                <div class="desc"><i class="fs-16 icon icon-mapPin"></i>
-                                    <p>21 Hillside Drive, Beverly Hills, California</p>
-                                </div>
-                                <ul class="meta-list">
-                                    <li class="item">
-                                        <i class="icon icon-bed"></i>
-                                        <span>4 Dormitorios</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-bathtub"></i>
-                                        <span>2 Baños</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-ruler"></i>
-                                        <span>600m² Sup. Total</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-ruler"></i>
-                                        <span>600m² Sup.Cub</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="archive-bottom d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Alquiler<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center hide-mobile">
-                                <div class=" fw-4">Alquiler Temporario<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Venta<Br /><span class="fw-7">USD 750.000</span></div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="homeya-box style-2">
-                        <div class="archive-top">
-                            <a href="#" class="images-group">
-                                <div class="images-style">
-                                    <img src="https://static.tokkobroker.com/w_pics/6338057_10159487052184649202069148169785577219492258863077179767683687090926827595018.jpg"
-                                        alt="img">
-                                </div>
-
-                            </a>
-                            <div class="content">
-                                <div class="h7 text-capitalize fw-7"><a href="#" class="link">Barrio Pellegrini III</a>
-                                </div>
-                                <div class="desc"><i class="fs-16 icon icon-mapPin"></i>
-                                    <p>Calle San Martín 800, Pilar</p>
-                                </div>
-                                <ul class="meta-list">
-                                    <li class="item">
-                                        <i class="icon icon-bed"></i>
-                                        <span>4 Dormitorios</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-bathtub"></i>
-                                        <span>2 Baños</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-ruler"></i>
-                                        <span>600m² Sup. Total</span>
-                                    </li>
-                                    <li class="item">
-                                        <i class="icon icon-ruler"></i>
-                                        <span>600m² Sup.Cub</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="archive-bottom d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Alquiler<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center hide-mobile">
-                                <div class=" fw-4">Alquiler Temporario<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Venta<Br /><span class="fw-7">USD 750.000</span></div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <div class="swiper-wrapper" id="props-wrapper"></div>
         </div>
     </div>
 </section>
+<script>
+    property_data = {
+        is_development: false,
+        property_type: "",
+        operation_type: "",
+        rooms: "",
+        suites: "",
+        bathrooms: "",
+        roofed: "",
+        surface: "",
+        price: {{$property['operations'][0]['prices'][0]['price']}},
+        location: "",
+        location_id: "",
+        order_by: "",
+        order: "",
+        currency: "",
+        offset: 0,
+        limit: 8,
+        tags: [],
+    };
+
+</script>
 <script src="{{asset('/js/utils/format.js')}}"></script>
+<script src="{{asset('/js/property/details.js')}}"></script>
 @endsection

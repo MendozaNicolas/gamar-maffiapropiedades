@@ -28,7 +28,7 @@
 
                                         </ul>
                                     </li>
-                                    <li><a href="#">Emprendimientos</a> </li>
+                                    <li><a href="{{Route('development.slugify')}}">Emprendimientos</a> </li>
                                     <li ><a href="{{Route('nosotros')}}">Nosotros</a>  </li>
                                     <li ><a href="{{Route('contacto')}}">Contacto</a>
                                         
