@@ -531,7 +531,8 @@ function insertSlug(f) {
         www += "-disponibles";
     }
     if (f.price && f.price != "0") {
-        www += `-con-presupuesto-${f.price}`;
+        let price = f.price;
+        www += `-con-presupuesto-${price[0].replaceAll('.', '')}`;
         if (f.currency && f.currency != "") {
             www += `-${f.currency}`;
         }

@@ -48,45 +48,6 @@
         </div>
     </div>
 </section>
-
-<!-- footer -->
-<footer class="footer">
-    <div class="top-footer">
-        <div class="container">
-            <div class="content-footer-top">
-                <div class="footer-logo">
-                    <img src="images/logo/logo-footer@2x.png" alt="logo-footer" width="174" height="44">
-                </div>
-                <div class="wd-social">
-                    <span>Seguinos:</span>
-                    <ul class="list-social d-flex align-items-center">
-                        <li><a href="#" class="box-icon w-40 social"><i class="icon icon-facebook"></i></a></li>
-                        <li><a href="#" class="box-icon w-40 social"><i class="icon icon-linkedin"></i></a></li>
-
-
-                        <li><a href="#" class="box-icon w-40 social"><i class="icon lni lni-instagram-original"></i></a>
-                        </li>
-                        <li><a href="#" class="box-icon w-40 social"><i class="icon icon-youtube"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bottom-footer">
-        <div class="container">
-            <div class="content-footer-bottom">
-                <div class="copyright">©2024 Virginia Maffia Propiedades. Todos los derechos reservados. Un diseño de
-                    <strong>gam.ar</strong></div>
-                <ul class="menu-bottom">
-                    <li><a href="our-service.html">Usos del Sitio</a> </li>
-                    <li><a href="contact.html">Sitemap</a> </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- end footer -->
 </div>
 <!-- /#page -->
 
@@ -132,6 +93,7 @@
 
 @push('scripts')
     <script src="{{ asset('vendor/typeahead.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/cleave.min.js') }}"></script>
     <script>
         // Constante usada para filtrar las propiedades
         property_data = @json($properties_data);

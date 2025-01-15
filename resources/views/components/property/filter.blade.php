@@ -217,7 +217,7 @@
                         </fieldset>
                     </div>
                     <div class="group-ip ip-icon">
-                        <input type="text" data-filterfy-info="price:value" class="form-control" placeholder="Ingresá tu presupuesto"
+                        <input type="text" data-filterfy-info="price:value" class="form-control presupuesto-desk" placeholder="Ingresá tu presupuesto"
                             name="price" title="Ingresá presupuesto" required>
                     </div>
                     <p style="text-align: end; margin: 8px;"><button style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" type="submit">Aplicar</button></p>

@@ -28,6 +28,9 @@ property_tags = [];
 
 $(window).on("load", function () {
     $("#loadMore").css("visibility", "hidden");
+    // cleavePresupuesto = new Cleave(".presupuesto", cleaveConfig); // Este es el formato del input de presupuesto.
+    cleavePresupuesto2 = new Cleave(".presupuesto-desk", cleaveConfig); // Este es el formato del input de presupuesto.
+
 
     $.ajax({
         url: "/get/tags",

@@ -24,15 +24,14 @@
                             <li class="nav-tab-item" role="presentation">
                                 <button
                                     style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;"
-                                    onclick="document.getElementById('operationtype-input').value = 'venta'"><a
-                                        href class="nav-link-item active"
-                                        data-bs-toggle="tab">Comprar</a></button>
+                                    onclick="document.getElementById('operationtype-input').value = 'venta'"><a href
+                                        class="nav-link-item active" data-bs-toggle="tab">Comprar</a></button>
                             </li>
                             <li class="nav-tab-item" role="presentation">
                                 <button
                                     style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;"
-                                    onclick="document.getElementById('operationtype-input').value = 'alquiler'"><a
-                                        href class="nav-link-item" data-bs-toggle="tab">Alquilar</a></button>
+                                    onclick="document.getElementById('operationtype-input').value = 'alquiler'"><a href
+                                        class="nav-link-item" data-bs-toggle="tab">Alquilar</a></button>
                             </li>
                             <li class="nav-tab-item hide-mobile" role="presentation">
                                 <button
@@ -197,177 +196,93 @@
                     <div class="archive-top">
                         <a href="ficha.html" class="images-group">
                             <div class="images-style">
-                                <img src="https://static.tokkobroker.com/w_pics/6118362_64501578973936695344099515106555743910172019129060087372967275992689225169284.jpg"
-                                    alt="img">
+                                <img src="{{$properties[0]['photos'][0]['image']}}" alt="img">
                             </div>
 
                         </a>
                         <div class="content">
-                            <h5 class="fw-3"><a href="ficha.html" class="link"> Alquiler temporal La Delfina - Pilar -
-                                    Frente al Hospital Austral</a></h5>
+                            <h5 class="fw-3"><a href="ficha.html" class="link"> {{$properties[0]['publication_title']}}</a>
+                            </h5>
                             <div class="desc"><i class="icon icon-mapPin"></i>
-                                <p>Avenida Rolón 3400, Lomas de San Isidro, San Isidro</p>
+                                <p>{{$properties[0]['real_address']}}</p>
                             </div>
 
                             <ul class="meta-list">
-                                <li class="item">
-                                    <i class="icon icon-bed"></i>
-                                    <span>4</span>
-                                </li>
-                                <li class="item">
-                                    <i class="icon icon-bathtub"></i>
-                                    <span>2</span>
-                                </li>
+                                @if($properties[0]['type']['name'] === "Departamento" || $properties[0]['type']['name'] === "Casa")
+                                    <li class="item">
+                                        <i class="icon icon-bed"></i>
+                                        <span>
+                                            @if($properties[0]['type']['name'] === "Departamento")
+                                                {{$properties[0]['room_amount']}}
+                                            @else
+                                                {{$properties[0]['suite_amount']}}
+                                            @endif
+                                        </span>
+                                    </li>
+                                @endif
+                                @if($properties[0]['type']['name'] != "Terreno")
+                                    <li class="item">
+                                        <i class="icon icon-bathtub"></i>
+                                        <span>
+                                            {{$properties[0]['bathroom_amount']}}
+                                        </span>
+                                    </li>
+                                @endif
                                 <li class="item">
                                     <i class="icon icon-ruler"></i>
-                                    <span>600 Sup. Total</span>
+                                    <span>{{$properties[0]['bathroom_amount']}}m² Sup. Total</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                    @php
+                        $operationTypes = [];
+                        foreach ($properties[0]['operations'] as $item) {
+                            $operationTypes[] = $item['operation_type'];
+                        }
+                    @endphp
                     <div class="archive-bottom d-flex justify-content-between align-items-center">
-                        <div class="d-flex gap-8 align-items-center">
-                            <div class=" fw-4">Alquiler<Br /><span class="fw-7">USD 750/mes</span></div>
+                        @if (in_array('Alquiler', $operationTypes) || in_array('Alquiler temporario', $operationTypes))
+                            <div class="d-flex gap-8 align-items-center">
+                                <div class=" fw-4">Alquiler<Br /><span class="fw-7">
+                                        USD $ @foreach($properties[0]['operations'] as $operation)
+                                            @if($operation['operation_type'] != 'Venta')
+                                                <span currency-format="usd"
+                                                    country-id="es-AR">{{$operation['prices'][0]['price']}}</span>
+                                            @endif
+                                        @endforeach
+                                        /mes
+                                    </span>
+                                </div>
 
-                        </div>
-                        <div class="d-flex gap-8 align-items-center">
-                            <div class=" fw-4">Venta<Br /><span class="fw-7">USD 750.000</span></div>
-                        </div>
+                            </div>
+                        @endif
+                        @if (in_array('Venta', $operationTypes))
+                            <div class="d-flex gap-8 align-items-center">
+                                <div class=" fw-4">Venta<Br /><span class="fw-7">
+                                        USD $
+                                        @foreach($properties[0]['operations'] as $operation)
+                                            @if($operation['operation_type'] == 'Venta')
+                                                <span currency-format="usd"
+                                                    country-id="es-AR">{{$operation['prices'][0]['price']}}</span>
+                                            @endif
+                                        @endforeach
+                                    </span>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
 
             <div class="box-right wow fadeInRightSmall" data-wow-delay=".2s" data-wow-duration="2000ms">
-                <div class="homeya-box list-style-1">
-                    <a href="property-details-v1.html" class="images-group">
-                        <div class="images-style">
-                            <img src="https://static.tokkobroker.com/w_pics/6118362_64501578973936695344099515106555743910172019129060087372967275992689225169284.jpg"
-                                alt="img">
-                        </div>
-
-                    </a>
-                    <div class="content">
-                        <div class="archive-top">
-                            <div class="h7 text-capitalize fw-3"><a href="ficha.html" class="link">Alquiler temporal La
-                                    Delfina - </a></div>
-                            <div class="desc">
-                                <i class="icon icon-mapPin"></i>
-                                <p>Avenida Libertador 18000, San isidro</p>
-                            </div>
-                            <ul class="meta-list">
-                                <li class="item">
-                                    <i class="icon icon-bed"></i>
-                                    <span>4</span>
-                                </li>
-                                <li class="item">
-                                    <i class="icon icon-bathtub"></i>
-                                    <span>2</span>
-                                </li>
-                                <li class="item">
-                                    <i class="icon icon-ruler"></i>
-                                    <span>600m², Sup. Total</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Alquiler<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Venta<Br /><span class="fw-7">USD 750.000</span></div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="homeya-box list-style-1">
-                    <a href="ficha.html" class="images-group">
-                        <div class="images-style">
-                            <img src="https://static.tokkobroker.com/w_pics/6163943_101500208500650703435093299336957320059296155478694986738925915755017055932419.jpg"
-                                alt="img">
-                        </div>
-
-                    </a>
-                    <div class="content">
-                        <div class="archive-top">
-                            <div class="h7 text-capitalize fw-3"><a href="ficha.html" class="link">Alquiler temporal La
-                                    Delfina - Pilar...</a></div>
-                            <div class="desc"><i class="icon icon-mapPin"></i>
-                                <p>145 Brooklyn Ave, Califonia, New York</p>
-                            </div>
-                            <ul class="meta-list">
-                                <li class="item">
-                                    <i class="icon icon-bed"></i>
-                                    <span>4</span>
-                                </li>
-                                <li class="item">
-                                    <i class="icon icon-bathtub"></i>
-                                    <span>2</span>
-                                </li>
-                                <li class="item">
-                                    <i class="icon icon-ruler"></i>
-                                    <span>600m² Sup. Cubierta</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Alquiler<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Venta<Br /><span class="fw-7">USD 750.000</span></div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="homeya-box list-style-1">
-                    <a href="property-details-v1.html" class="images-group">
-                        <div class="images-style">
-                            <img src="https://static.tokkobroker.com/water_pics/13189665647666139169816260051114795360087888557017275650103167469248947913944.jpg"
-                                alt="img">
-                        </div>
-
-                    </a>
-                    <div class="content">
-                        <div class="archive-top">
-                            <div class="h7 text-capitalize fw-3"><a href="ficha.html" class="link">Casa en Venta en
-                                    Pilar</a></div>
-                            <div class="desc"><i class="icon icon-mapPin"></i>
-                                <p>Avenida Ricarod Garay 1200, Pilar</p>
-                            </div>
-                            <ul class="meta-list">
-                                <li class="item">
-                                    <i class="icon icon-bed"></i>
-                                    <span>4</span>
-                                </li>
-                                <li class="item">
-                                    <i class="icon icon-bathtub"></i>
-                                    <span>2</span>
-                                </li>
-                                <li class="item">
-                                    <i class="icon icon-ruler"></i>
-                                    <span>600m²</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Alquiler<Br /><span class="fw-7">USD 750/mes</span></div>
-
-                            </div>
-                            <div class="d-flex gap-8 align-items-center">
-                                <div class=" fw-4">Venta<Br /><span class="fw-7">USD 750.000</span></div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                @forelse ($properties as $key => $property)
+                    @if($key != 0)
+                        <x-homepage.starred-card :property="$property" />
+                    @endif
+                @empty
+                    En este momento no hay propiedades destacadas
+                @endforelse
             </div>
         </div>
     </div>
@@ -431,8 +346,8 @@
 
 @push('scripts')searchVenta
 <script src="{{ asset('vendor/cleave.min.js') }}"></script>
-{{--
-<script src="{{ asset('js/utils/format.js') }}"></script> --}}
+
+<script src="{{ asset('js/utils/format.js') }}"></script>
 <script src="{{ asset('vendor/typeahead.bundle.min.js') }}"></script>
 
 <script>

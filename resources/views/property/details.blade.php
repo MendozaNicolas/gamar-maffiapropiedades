@@ -83,7 +83,6 @@
                     <p class="meta-item"><span class="icon icon-mapPin"></span>
                         {{ $property['location']['short_location'] }}</p>
                 </div>
-
             </div>
         </div>
         <div class="row">
@@ -91,7 +90,7 @@
                 <div class="single-property-element single-property-desc">
                     <div class="h7 title fw-7">Descripción de la propiedad</div>
                     <p class="body-2 text-variant-1" id="rich-description">
-                        {{ $property['description'] }}
+                    {!! str_replace(['<div>', '</div>'], ['<p>', '</p>', '<br>', '<br/>'], $property['rich_description']) !!}
                     </p>
                 </div>
                 <div class="single-property-element single-property-overview">
@@ -175,7 +174,7 @@
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             <!-- <img src="images/banner/img-video.jpg" alt="img-video">
 
-                                                    <a href="https://youtu.be/t_0RC96t0Wc" data-fancybox="gallery2" class="btn-video"> <span class="icon icon-play"></span></a> -->
+                                                        <a href="https://youtu.be/t_0RC96t0Wc" data-fancybox="gallery2" class="btn-video"> <span class="icon icon-play"></span></a> -->
                         </div>
                     </div>
                 @endif
@@ -292,7 +291,6 @@
 
                             <ul>
                                 @forelse ($property['tags'] as $tag)
-                                    <li></li>
                                     <li class="feature-item">
                                         <span class="icon lni lni-checkmark-circle"></span>
                                         {{ $tag['name'] }}

@@ -14,9 +14,7 @@
                         <nav class="main-menu show navbar-expand-md">
                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li class=" home current"><a href="/">Inicio</a>
-                                        
-                                    </li>
+                                    <li class=" home current"><a href="/">Inicio</a></li>
                                     <li class="dropdown2"><a href="#">Propiedades</a>
                                         <ul>
                                             <li><a href="">Lotes en Venta</a> </li>
@@ -25,16 +23,11 @@
                                             <li><a href="">Departamentos en Alquiler</a></li>
                                             <li><a href="">Departamentos en Venta</a></li>
                                             <li><a href="">Oficinas</a></li>
-
                                         </ul>
                                     </li>
                                     <li><a href="{{Route('development.slugify')}}">Emprendimientos</a> </li>
-                                    <li ><a href="{{Route('nosotros')}}">Nosotros</a>  </li>
-                                    <li ><a href="{{Route('contacto')}}">Contacto</a>
-                                        
-                                    </li>
-                                    
-                                    
+                                    <li><a href="{{Route('nosotros')}}">Nosotros</a></li>
+                                    <li><a href="{{Route('contacto')}}">Contacto</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -52,10 +45,8 @@
                             <a class="tf-btn primary" href="{{Route('tasaciones')}}">Vendé</a>
                         </div>  
                     </div>
-                    
                     <div class="mobile-nav-toggler mobile-button"><span></span></div>
-                    <button class="tasa-ahora-btn"><b>Tasá Ahora</b></button>
-                    
+                    <a href="{{Route('tasaciones')}}" class="tasa-ahora-btn"><b>Tasá Ahora</b></a>
                 </div>
             </div>
         </div>
