@@ -7,8 +7,8 @@
                 <div class="form-style">
                     <label class="title-select">Ubicación</label>
                     <div class="group-ip ip-icon">
-                        <input id="location-input" type="text" class="form-control" placeholder="Tipea una ubicación" value=""
-                            name="location" title="Search for" required="">
+                        <input id="location_input" type="text" class="form-control awesomplete" placeholder="Tipea una ubicación" value=""
+                            name="location" title="Buscar localidad" required list="locations_list">
 
                     </div>
                 </div>

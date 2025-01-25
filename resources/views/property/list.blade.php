@@ -1,5 +1,9 @@
+@push('head')
+    <link rel="stylesheet" href="{{asset('/css/awesomplete.css')}}" />
+@endpush
 @extends('layout.app')
 @section('content')
+<datalist id="locations_list"></datalist>
 <section class="flat-section-v6 flat-recommended flat-sidebar">
     <div class="container">
         <div class="box-title-listing">
@@ -93,94 +97,38 @@
 
 @push('scripts')
     <script src="{{ asset('vendor/typeahead.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/awesomplete.min.js') }}" async></script>
     <script src="{{ asset('vendor/cleave.min.js') }}"></script>
     <script>
         // Constante usada para filtrar las propiedades
         property_data = @json($properties_data);
 
-        var locationsCompleteRaw = @json($locations);
-        var locationsComplete = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('location_name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: locationsCompleteRaw
+        var locations = @json($locations);
+        locations.forEach(element => {
+            const locationsDataList = document.getElementById('locations_list');
+            const newOption = document.createElement("option");
+            const newContent = document.createTextNode(element.location_name);
+
+            newOption.appendChild(newContent);
+            newOption.setAttribute("value", element.location_id);
+
+
+            locationsDataList.appendChild(newOption);
         });
 
-        typeaheadOptions = {
-            hint: true,
-            highlight: true,
-            minLength: 1
-        };
-
-
-        // Custom tokenizer that replaces non-breaking spaces with regular spaces
-        // function customTokenizer(str) {
-        //     if (!str) return [];
-        //     // Replace non-breaking spaces with regular spaces
-        //     str = str.replace(/[\u00A0]/g, ' ').replace(/\s+/g, ' ');
-        //     return str.split(' ');
-        // }
-
-        // var locationsComplete = new Bloodhound({
-        //     datumTokenizer: function (datum) {
-        //         return datum.display_name ? customTokenizer(datum.display_name) : [];
-        //     },
-        //     queryTokenizer: customTokenizer,
-        //     local: locationsCompleteRaw,
-        //     sorter: function (a, b) {
-        //         // Custom sorting function based on location_type hierarchy
-        //         return a.location_type - b.location_type;
-        //     }
-        // });
-
-        $('#location-input').typeahead({
-            hint: true,
-            highlight: true,
-            minLength: 1
-        }, {
-            name: 'locationsComplete',
-            source: locationsComplete,
-            displayKey: 'location_name',
-            templates: {
-
-                // Aca personalizas el mensaje que salta cuando no se encuentra 
-                // ninguna localidad.
-                empty: [
-                    '<div style="background-color: white;">',
-                    'No se encontró ninguna localidad',
-                    '</div>'
-                ].join('\n'),
-                suggestion: function (data) {
-
-                    // Aca es donde se puede personalizar el input,
-                    // fijate que le puse unos estilos por defecto para que mas 
-                    // o menos se vea decente.
-
-
-                    return `
-                                <li style="background-color: #fff; list-style:none;">
-                                    <div style="background-color: #fff;">
-                                        <div class="item_title">
-                                            <i class="flaticon-maps pe-2"></i>
-                                            ${data.location_name.replace(/ /g, '\xa0')}  
-                                        </div>
-                                    </div>
-                                </li>
-                                `;
-                }
-            }
-        }).on('typeahead:selected', function (event, suggestion) {
-            filterfy('location:' + suggestion.location_name + '&location_id:' + suggestion.location_id);
-        });
-
-        // Tambien está el elemento tt-menu que crea la libreria
-        // Modificando tt-menu podes cambiar el fondo del select
-        // tambien en la funcion prepend podes poner un header del select
-        $('.tt-menu').prepend(`
-                        <h6 style="background-color: #fff; padding: 10px;">Resultados encontrados</h6>
-                    `);
+        document.getElementById('location_input')
+            .addEventListener("awesomplete-selectcomplete", (event) => {
+                document.getElementById('location_input').value = event.text.label;
+                filterfy('location:' + event.text.label + '&location_id:' + event.text.value);
+            });
     </script>
+
     <script src="{{ asset('js/utils/tokko-tags.js') }}"></script>
-    <script src="{{asset('js/utils/filterfy.js')}}"></script>
-    <script src="{{asset('js/utils/format.js')}}"></script>
-    <script src="{{asset('js/property/list.js')}}"></script>
+    <script src="{{ asset('js/utils/filterfy.js') }}"></script>
+    <script src="{{ asset('js/utils/format.js') }}"></script>
+    <script src="{{ asset('js/property/list.js') }}"></script>
+
+    @if (env('APP_DEBUG'))
+        <script>console.log('locations', locations)</script>
+    @endif
 @endpush

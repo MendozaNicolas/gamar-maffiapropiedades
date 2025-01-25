@@ -1,5 +1,10 @@
+@push('head')
+    <link rel="stylesheet" href="{{asset('/css/awesomplete.css')}}" />
+@endpush
 @extends('layout.app')
 @section('content')
+<datalist id="locations_list"></datalist>
+
 <!-- Slider -->
 <section class="flat-slider home-1">
     <div class="container relative">
@@ -70,9 +75,10 @@
                                                 <div class="form-group-2 form-style">
                                                     <label>Ubicación</label>
                                                     <div class="group-ip">
-                                                        <input id="locationVenta" type="text" class="form-control"
+                                                        <input id="location_input" type="text"
+                                                            class="form-control awesomplete"
                                                             placeholder="ingresá una localidad" value="" name="search"
-                                                            title="Search for">
+                                                            title="Buscar..." list="locations_list">
                                                     </div>
                                                 </div>
                                             </div>
@@ -194,14 +200,17 @@
             <div class="box-left  wow fadeInLeftSmall" data-wow-delay=".2s" data-wow-duration="2000ms">
                 <div class="homeya-box lg">
                     <div class="archive-top">
-                        <a href="ficha.html" class="images-group">
+                        <a href="./propiedad/{{Str::slug($properties[0]['id'] . '-' . $properties[0]['type']['name'] . $properties[0]['operations'][0]['operation_type'] . $properties[0]['location']['name'])}}"
+                            class="images-group">
                             <div class="images-style">
                                 <img src="{{$properties[0]['photos'][0]['image']}}" alt="img">
                             </div>
 
                         </a>
                         <div class="content">
-                            <h5 class="fw-3"><a href="ficha.html" class="link"> {{$properties[0]['publication_title']}}</a>
+                            <h5 class="fw-3"><a
+                                    href="./propiedad/{{Str::slug($properties[0]['id'] . '-' . $properties[0]['type']['name'] . $properties[0]['operations'][0]['operation_type'] . $properties[0]['location']['name'])}}"
+                                    class="link"> {{$properties[0]['publication_title']}}</a>
                             </h5>
                             <div class="desc"><i class="icon icon-mapPin"></i>
                                 <p>{{$properties[0]['real_address']}}</p>
@@ -230,7 +239,7 @@
                                 @endif
                                 <li class="item">
                                     <i class="icon icon-ruler"></i>
-                                    <span>{{$properties[0]['bathroom_amount']}}m² Sup. Total</span>
+                                    <span>{{ explode('.', $properties[0]['surface'])[0] }}m² Sup. Total</span>
                                 </li>
                             </ul>
                         </div>
@@ -344,163 +353,40 @@
 <!-- End Service & Counter -->
 @endsection
 
-@push('scripts')searchVenta
-<script src="{{ asset('vendor/cleave.min.js') }}"></script>
+@push('scripts')
+    <script src="{{ asset('vendor/cleave.min.js') }}"></script>
+    <script src="{{ asset('js/utils/format.js') }}"></script>
+    <script src="{{ asset('vendor/awesomplete.min.js') }}" async></script>
+    <script>
+        const locations = @json($locations);
 
-<script src="{{ asset('js/utils/format.js') }}"></script>
-<script src="{{ asset('vendor/typeahead.bundle.min.js') }}"></script>
+        locations.forEach(element => {
+            const locationsDataList = document.getElementById('locations_list');
+            const newOption = document.createElement("option");
+            const newContent = document.createTextNode(element.location_name);
 
-<script>
-    var locationsCompleteRaw = @json($locations);
-
-    var locationsComplete = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('location_name'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: locationsCompleteRaw
-    });
-
-
-    $('#locationVenta').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1
-    }, {
-        name: 'locationsComplete',
-        source: locationsComplete,
-        displayKey: 'location_name',
-        templates: {
-
-            // Aca personalizas el mensaje que salta cuando no se encuentra 
-            // ninguna localidad.
-            empty: [
-                '<div style="background-color: white;">',
-                'No se encontró ninguna localidad',
-                '</div>'
-            ].join('\n'),
-            suggestion: function (data) {
-
-                // Aca es donde se puede personalizar el input,
-                // fijate que le puse unos estilos por defecto para que mas 
-                // o menos se vea decente.
+            newOption.appendChild(newContent);
+            newOption.setAttribute("value", element.location_id);
 
 
-                return `
-            <li style="background-color: #fff; list-style:none;">
-                <div style="background-color: #fff;">
-                    <div class="item_title">
-                        <i class="flaticon-maps pe-2"></i>
-                        ${data.location_name.replace(/ /g, '\xa0')}  
-                    </div>
-                </div>
-            </li>
-            `;
-            }
-        }
-    }).on('typeahead:selected', function (event, suggestion) {
-        $('#locationid-input').val(suggestion.location_id);
-        $('#locationname-input').val(suggestion.location_name != undefined ? suggestion.location_name :
-            suggestion.development_name);
-    });
+            locationsDataList.appendChild(newOption);
+        });
 
+        document.getElementById('location_input')
+            .addEventListener("awesomplete-highlight", (event) => {
+                document.getElementById('locationname-input').value = event.text.label;
+                document.getElementById('locationid-input').value = event.text.value;
+                document.getElementById('location_input').value = event.text.label;
+            });
+        document.getElementById('location_input')
+            .addEventListener("awesomplete-selectcomplete", (event) => {
+                document.getElementById('locationname-input').value = event.text.label;
+                document.getElementById('locationid-input').value = event.text.value;
+                document.getElementById('location_input').value = event.text.label;
+            });
+    </script>
 
-
-
-    $('#location-input-alquiler').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1
-    }, {
-        name: 'locationsComplete',
-        source: locationsComplete,
-        displayKey: 'location_name',
-        templates: {
-
-            // Aca personalizas el mensaje que salta cuando no se encuentra 
-            // ninguna localidad.
-            empty: [
-                '<div style="background-color: white;">',
-                'No se encontró ninguna localidad',
-                '</div>'
-            ].join('\n'),
-            suggestion: function (data) {
-
-                // Aca es donde se puede personalizar el input,
-                // fijate que le puse unos estilos por defecto para que mas 
-                // o menos se vea decente.
-
-
-                return `
-            <li style="background-color: #fff; list-style:none;">
-                <div style="background-color: #fff;">
-                    <div class="item_title">
-                        <i class="flaticon-maps pe-2"></i>
-                        ${data.location_name.replace(/ /g, '\xa0')}  
-                    </div>
-                </div>
-            </li>
-            `;
-            }
-        }
-    }).on('typeahead:selected', function (event, suggestion) {
-        $('#locationid-input-alquiler').val(suggestion.location_id);
-        $('#locationname-input-alquiler').val(suggestion.location_name != undefined ? suggestion.location_name :
-            suggestion.development_name);
-        $('#operationtype-input-alquiler').val(suggestion.location_name != undefined ? 'alquiler' :
-            'emprendimiento');
-    });
-    $('#location-input-alquiler-temporal').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1
-    }, {
-        name: 'locationsComplete',
-        source: locationsComplete,
-        displayKey: 'location_name',
-        templates: {
-
-            // Aca personalizas el mensaje que salta cuando no se encuentra 
-            // ninguna localidad.
-            empty: [
-                '<div style="background-color: white;">',
-                'No se encontró ninguna localidad',
-                '</div>'
-            ].join('\n'),
-            suggestion: function (data) {
-
-                // Aca es donde se puede personalizar el input,
-                // fijate que le puse unos estilos por defecto para que mas 
-                // o menos se vea decente.
-
-
-                return `
-            <li style="background-color: #fff; list-style:none;">
-                <div style="background-color: #fff;">
-                    <div class="item_title">
-                        <i class="flaticon-maps pe-2"></i>
-                        ${data.location_name.replace(/ /g, '\xa0')}  
-                    </div>
-                </div>
-            </li>
-            `;
-            }
-        }
-    }).on('typeahead:selected', function (event, suggestion) {
-        $('#locationid-input-alquiler-temporal').val(suggestion.location_id);
-        $('#locationname-input-alquiler-temporal').val(suggestion.location_name != undefined ? suggestion
-            .location_name :
-            suggestion.development_name);
-        $('#operationtype-input-alquiler-temporal').val(suggestion.location_name != undefined ?
-            'alquiler-temporal' :
-            'emprendimiento');
-    });
-
-    // Tambien está el elemento tt-menu que crea la libreria
-    // Modificando tt-menu podes cambiar el fondo del select
-    // tambien en la funcion prepend podes poner un header del select
-    $('.tt-menu').prepend(`
-    <h6 style="background-color: #fff; padding: 10px 5em">Resultados encontrados</h6>
-`);
-
-
-</script>
+    @if (env('APP_DEBUG'))
+        <script>console.log('locations', locations)</script>
+    @endif
 @endpush

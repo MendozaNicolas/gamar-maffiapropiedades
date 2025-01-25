@@ -1,12 +1,12 @@
 <div class="homeya-box list-style-1">
-    <a href="property-details-v1.html" class="images-group">
-        <div class="images-style">
+    <a href="./propiedad/{{Str::slug($property['id'] . '-' . $property['type']['name'] . $property['operations'][0]['operation_type'] . $property['location']['name'])}}" class="images-group">
+    <div class="images-style">
             <img src="{{$property['photos'][0]['image']}}" alt="img">
         </div>
     </a>
     <div class="content">
         <div class="archive-top">
-            <div class="h7 text-capitalize fw-3"><a href="ficha.html"
+            <div class="h7 text-capitalize fw-3"><a href="./propiedad/{{Str::slug($property['id'] . '-' . $property['type']['name'] . $property['operations'][0]['operation_type'] . $property['location']['name'])}}"
                     class="link">{{$property['publication_title']}}</a></div>
             <div class="desc">
                 <i class="icon icon-mapPin"></i>
@@ -33,7 +33,7 @@
                 @endif
                 <li class="item">
                     <i class="icon icon-ruler"></i>
-                    <span>{{$property['surface']}}m², Sup. Total</span>
+                    <span>{{ explode('.', $property['surface'])[0]  }}m² Sup. Total</span>
                 </li>
             </ul>
         </div>
